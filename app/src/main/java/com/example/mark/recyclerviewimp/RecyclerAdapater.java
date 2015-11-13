@@ -3,6 +3,7 @@ package com.example.mark.recyclerviewimp;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -41,7 +42,7 @@ public class RecyclerAdapater extends RecyclerView.Adapter<RecyclerAdapater.MyVH
 
         return viewHolder;
     }
-
+    //this other implementation where the whole row will answer the user actions
     private View setupView(ViewGroup parent){
         View view = mLayoutInflater.inflate(R.layout.recycler_row, parent, false);
 
@@ -64,9 +65,6 @@ public class RecyclerAdapater extends RecyclerView.Adapter<RecyclerAdapater.MyVH
         return view;
     }
 
-
-
-
     @Override
     public void onBindViewHolder(MyVH holder, int position) {
         DataInfo info = mInfoList.get(position);
@@ -78,8 +76,6 @@ public class RecyclerAdapater extends RecyclerView.Adapter<RecyclerAdapater.MyVH
     public int getItemCount() {
         return mInfoList.size();
     }
-
-
 
     class MyVH extends RecyclerView.ViewHolder{
         private TextView textView;
@@ -95,6 +91,10 @@ public class RecyclerAdapater extends RecyclerView.Adapter<RecyclerAdapater.MyVH
 
         private void setupImageView(final View view){
             imageView = (ImageView) view.findViewById(R.id.imageview);
+
+            /*
+            this is the easiest way to implement listeners on the views
+
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -104,10 +104,15 @@ public class RecyclerAdapater extends RecyclerView.Adapter<RecyclerAdapater.MyVH
                     Toast.makeText(view.getContext(), "ImageView " + text, Toast.LENGTH_LONG).show();
                 }
             });
+            */
         }
 
         private void setupTextView(final View view){
             textView = (TextView)view.findViewById(R.id.textview);
+
+            /*
+            this is the easiest way to implement listeners on the views
+
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -127,6 +132,8 @@ public class RecyclerAdapater extends RecyclerView.Adapter<RecyclerAdapater.MyVH
                     return true;
                 }
             });
+
+            */
         }
 
         public  void setTextView(String text){
@@ -137,6 +144,8 @@ public class RecyclerAdapater extends RecyclerView.Adapter<RecyclerAdapater.MyVH
             imageView.setImageResource(iconId);
         }
     }
+
+
 
 
 
